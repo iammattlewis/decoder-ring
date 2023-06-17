@@ -29,7 +29,28 @@ describe("Substitution Cipher", () => {
       const actual = substitution(input, alphabet);
       expect(actual).to.be.equal(expected);
     });
-  
+    
+    it("should encrypt correctly when substitution alphabet contains numbers or special characters", () => {
+      const input = "hello";
+      const alphabet = "qodp8ij%rkt3sm?geycfaxlwbu";
+      const expected = "%833?";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("should return input when substitution alphabet matches standard alphabet", () => {
+      const input = "this is not a secret";
+      const alphabet = "abcdefghijklmnopqrstuvwxyz";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.equal(input);
+    });
+
+    it("should return false when trying to encrypt a character not found in the standard alphabet", () => {
+      const input = "you can't include apostrophes, it won't work";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.false;
+    });
   })
 
   
