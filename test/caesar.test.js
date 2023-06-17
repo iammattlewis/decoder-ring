@@ -113,8 +113,8 @@ describe("Caesar Shift", () => {
       });
 
       it("should decrypt multiple words", () => {
-        const input = "vszzc achvsf zscdofr";
-        const shift = -12;
+        const input = "khoor prwkhu ohrsdug";
+        const shift = -3;
         const expected = "hello mother leopard";
         const actual = caesar(input, shift);
         expect(actual).to.be.equal(expected);
@@ -123,7 +123,7 @@ describe("Caesar Shift", () => {
         const input = "dum sqdefyui qhyiu";
         const shift = -10;
         const expected = "new canopies arise";
-        const actual = caesar(input, shift);
+        const actual = caesar(input, shift, false);
         expect(actual).to.be.equal(expected);
       });
     });
