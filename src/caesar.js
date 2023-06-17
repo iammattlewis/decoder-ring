@@ -17,7 +17,7 @@ const caesarModule = (function () {
         .toLowerCase()
         .split("")
         .map((character) => shifter(character, shift))
-        .join("")
+        .join("");
     }    
     function shifter(character, shift) {
       // alphabet array for the key
