@@ -10,7 +10,7 @@ const substitutionModule = (function () {
 
   function substitution(input, alphabet, encode = true) {
     try {
-      validAlphabet(alphabet);
+      validABC(alphabet);
       const codeKey = alphabet.toLowerCase().split("");
       return input
         .toLowerCase()
