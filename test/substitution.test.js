@@ -111,7 +111,8 @@ describe("Substitution Cipher", () => {
     });
 
     it("should return false when valid alphabet is provided, but input is not", () => {
-      const input = "kgwujvyeopltncdamhfzxqrbsi";
+      const input = "";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
       const actual = substitution(undefined, alphabet);
       expect(actual).to.be.false;
     });
