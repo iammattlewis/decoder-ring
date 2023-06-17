@@ -166,8 +166,25 @@ describe("Caesar Shift", () => {
   // INVALID SHIFT ERRORS
 
   describe("Invalid Shift Errors", () => {
-    
-  })
+    it("should return false when shift = 0", () => {
+      const input = "wormed our way through distant earth";
+      const shift = 0;
+      const actual = caesar(input, shift);
+      expect(actual).to.be.false;
+    });
 
+    it("should return false when shift < -25", () => {
+      const input = "lazarus threw the fight";
+      const shift = -75;
+      const actual = caesar(input, shift);
+      expect(actual).to.be.false;
+    });
 
+    it("should return false when shift > 25", () => {
+      const input = "jefferson survives";
+      const shift = 100;
+      const actual = caesar(input, shift);
+      expect(actual).to.be.false;
+    });
+  });
 });
