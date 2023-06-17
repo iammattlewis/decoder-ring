@@ -61,6 +61,44 @@ describe("Substitution Cipher", () => {
       const actual = substitution(input, alphabet, false);
       expect(actual).to.be.equal(expected);
     });
+
+    it("should decrypt multiple words", () => {
+      const input = "ejttd rdhtu";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const expected = "hello world";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("should ignore case", () => {
+      const input = "EjtTD";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const expected = "hello";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("should decrypt correctly when substitution alphabet contains numbers or special characters", () => {
+      const input = "%833?";
+      const alphabet = "qodp8ij%rkt3sm?geycfaxlwbu";
+      const expected = "hello";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("should return input when substitution alphabet matches standard alphabet", () => {
+      const input = "this is not a secret";
+      const alphabet = "abcdefghijklmnopqrstuvwxyz";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.equal(input);
+    });
+
+    it("should return false when trying to decrypt a letter not found in the substitution alphabet", () => {
+      const input = "you can't include apostrophes, it won't work";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.false;
+    });
   })
 
   
