@@ -71,7 +71,7 @@ describe("Caesar Shift", () => {
 
 // DECRYPTION
 
-  describe("decryption", () => {
+  describe("Decryption", () => {
     // positive shift
 
     describe ("positive shift", () => {
