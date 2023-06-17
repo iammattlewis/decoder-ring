@@ -99,7 +99,78 @@ describe("Substitution Cipher", () => {
       const actual = substitution(input, alphabet, false);
       expect(actual).to.be.false;
     });
-  })
+  });
 
-  
+  // ERROR CASES
+
+  describe("Invalid Alphabet Error", () => {
+    it("should return false when no alphabet provided", () => {
+      const input = "null";
+      const actual = substitution(input);
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when valid alphabet is provided, but input is not", () => {
+      const input = "kgwujvyeopltncdamhfzxqrbsi";
+      const actual = substitution(undefined, alphabet);
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when no arguments are passed", () => {
+      const input = "no arguments";
+      const actual = substitution();
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when alphabet length < 26", () => {
+      const input = "too short";
+      const alphabet = "xyz";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when alphabet length > 26", () => {
+      const input = "too long";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsiqodp8ij%rkt3sm?geycfaxlwbu";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when alphabet contains repeated characters", () => {
+      const input = "repetition error";
+      const alphabet = "abcdefghijklmnopqrstuzzzzz"; 
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when alphabet is not a string", () => {
+      const input = "no strings attached";
+      const alphabet = 2023;
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.false;
+    });
+
+    it("should return false when alphabet contains 26 unique characters, but also additional repeated characters", () => {
+      const input = "hoxx yuqr";
+      const alphabet = "aaaaaaaaaaaaaaabcdefghijklmnopqrstuvwxyzzzzzzzzzzzzzzzzzz";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.false;
+    });
+
+    it("should return encrypted message when input contains the word 'false'", () => {
+      const input = "false message";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const expected = "vktfj njffkyj";
+      const actual = substitution(input, alphabet);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("should return decrypted message when it contains the word 'false'", () => {
+      const input = "vktfj njffkyj";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const expected = "false message";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.equal(expected);
+    });
+  });
 });
