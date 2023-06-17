@@ -2,9 +2,12 @@
 const expect = require("chai").expect;
 const { caesar } = require("../src/caesar");
 
-// ENCRYPTION
+
 
 describe("Caesar Shift", () => {
+  
+  // ENCRYPTION
+
   describe("Encryption", () => {
     // positive shift
     describe("positive shift", () => {
@@ -64,6 +67,7 @@ describe("Caesar Shift", () => {
 
 
 // DECRYPTION
+
   describe("decryption", () => {
     describe ("positive shift", () => {
       it("decrypts single word", () => {
