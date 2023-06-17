@@ -46,8 +46,52 @@ describe("Polybius Square", () => {
     });
   });
 
-  
-  
+// DECRYPTION
 
+  describe("Decryption", () => {
+    it("decrypts a single code", () => {
+      const input = "3251131343";
+      const expected = "hello";
+      const actual = polybius(input, false);
+      expect(actual).to.be.equal(expected);
+    });
 
-})
+    it("decrypts codes separated by spaces", () => {
+      const input = "3251131343 2543241341";
+      const expected = "hello world";
+      const actual = polybius(input, false);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("decrypts code 42 as (i/j)", () => {
+      const input = "42";
+      const expected = "(i/j)";
+      const actual = polybius(input, false);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("returns false when input is odd length", () => {
+      const input = "3251131343 443242335212541 2543241341 ";
+      const actual = polybius(input, false);
+      expect(actual).to.be.false;
+    });
+
+    it("returns decrypted message, even if it contains the world 'false'", () => {
+      const input = "1211133451";
+      const expected = "false";
+      const actual = polybius(input, false);
+      expect(actual).to.be.equal(expected);
+    });
+
+    it("returns false when given invalid codes", () => {
+      const input = "66778899";
+      const actual = polybius(input, false);
+      expect(actual).to.be.false;
+    });
+
+    it("returns false when no input is entered", () => {
+      const actual = polybius();
+      expect(actual).to.be.false;
+    });
+  });
+});
