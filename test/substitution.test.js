@@ -51,6 +51,16 @@ describe("Substitution Cipher", () => {
       const actual = substitution(input, alphabet);
       expect(actual).to.be.false;
     });
+  });
+
+  describe("Decryption", () => {
+    it("should decrypt a single word", () => {
+      const input = "ejttd";
+      const alphabet = "kgwujvyeopltncdamhfzxqrbsi";
+      const expected = "hello";
+      const actual = substitution(input, alphabet, false);
+      expect(actual).to.be.equal(expected);
+    });
   })
 
   
