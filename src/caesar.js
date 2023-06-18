@@ -7,24 +7,20 @@ const caesarModule = (function () {
   // you can add any code you want within this function scope
 
   function caesar(input, shift, encode = true) {
-    try {
-      if (!shift || shift < -25 || shift > 25)
-        throw new Error("Shift must be between -25 and 25.");
-      if (typeof input !== "string")
-        throw new Error("Input must be a string.");
-
-      shift *= encode ? 1 : -1;
-
-      return input
-        .toLowerCase()
-        .split("")
-        .map((character) => shifter(character, shift))
-        .join("");
-    } catch (error) {
+    if (!shift || shift < -25 || shift > 25 || typeof input !== "string") {
       return false;
     }
-  }
+  // activates decode mode, which inverts the shift  
+  if (encode === false) {
+    shift = shift * -1;
+  }    
 
+  return input
+      .toLowerCase()
+      .split("")
+      .map((character) => shifter(character, shift))
+      .join("");
+    }
 
     function shifter(character, shift) {
       // alphabet array for the key
