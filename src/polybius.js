@@ -18,6 +18,7 @@ const polybiusModule = (function () {
         .map((word) => iterateWord(word, encode, keys))
         .join(" ");
     } catch (error) {
+      // console.log(`${error}`); // when uncommented, this prints the error to the console
       return false;
     }
   }
@@ -35,6 +36,7 @@ const polybiusModule = (function () {
     
     // decode
     if (word.length % 2 !== 0)
+      // odd length words cause output to be false
       throw new Error("Coordinates come in pairs. Decryption cannot occur with an odd numbered total.")
     
     let output = "";
