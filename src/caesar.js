@@ -26,7 +26,7 @@ const caesarModule = (function () {
     function shifter(character, shift) {
       // alphabet array for the key
       const key = "abcdefghijklmnopqrstuvwxyz".split(""); 
-      
+
       if (!character.match(/[a-z]/)) return character;
 
       
