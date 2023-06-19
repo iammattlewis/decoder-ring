@@ -14,7 +14,7 @@ const caesarModule = (function () {
   if (encode === false) {
     shift = shift * -1;
   }    
-
+  // returns our input to lower case, splits its, maps it, shifts it using the shifter helper function and joins it back again
   return input
       .toLowerCase()
       .split("")
@@ -22,11 +22,14 @@ const caesarModule = (function () {
       .join("");
     }
 
+    // this performs the actual algorithm
     function shifter(character, shift) {
       // alphabet array for the key
       const key = "abcdefghijklmnopqrstuvwxyz".split(""); 
+      
       if (!character.match(/[a-z]/)) return character;
 
+      
       let index = key.indexOf(character);
       let shifted = (((index + shift) % 26) + 26) % 26;
       return key[shifted];
