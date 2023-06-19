@@ -21,7 +21,30 @@ const caesarModule = (function () {
       .map((character) => shifter(character, shift))
       .join("");
     }
+    
+    /*
+    Option 2: If using this option, comment out the above code
+    from the first if statement to the return statement.
 
+        try {
+      if (!shift || shift < -25 || shift > 25)
+        throw new Error("Shift must be between -25 and 25.");
+      if (typeof input !== "string")
+        throw new Error("Input must be a string.");
+
+      shift *= encode ? 1 : -1;
+
+      return input
+        .toLowerCase()
+        .split("")
+        .map((character) => shifter(character, shift))
+        .join("");
+    }    
+    } catch (error) {
+      return false;
+    }
+  }
+    */
     // this performs the actual algorithm
     function shifter(character, shift) {
       // alphabet array for the key
