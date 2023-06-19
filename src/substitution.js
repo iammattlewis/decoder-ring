@@ -27,6 +27,8 @@ const substitutionModule = (function () {
     }
   }
 
+  // Helper Functions
+  // finds character from the fromKey array and maps the input to the same index on the toKey array
   function mapTo(input, fromKey, toKey) {
     if (input.match(/\s/)) return input; // found out about character classes and escapes on MDN
     const index = fromKey.indexOf(input);
@@ -34,7 +36,7 @@ const substitutionModule = (function () {
       throw new Error(`${input} not found in alphabet.`);
     return toKey[index];
   }
-
+  // makes sure alphabet is valid
   function validABC(alphabet) {
     if (alphabet.length !== 26)
       throw new Error(`A valid alphabet must be twenty-six characters long.`);
